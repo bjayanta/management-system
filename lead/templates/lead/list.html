@@ -1,0 +1,32 @@
+{% extends 'core/base.html' %}
+
+{% block title %}All Leads | MaxSOP{% endblock title %}
+
+{% block content %}
+    <section class="container">
+        <h1>All Leads</h1>
+        <a href="{% url 'lead.create' %}" class="btn btn-primary">Add Lead</a>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>SL</th>
+                    <th>Name</th>
+                    <th>Priority</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for lead in leads %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td><a href="{% url 'lead.detail' lead.id %}">{{ lead.name }}</a></td>
+                    <td>{{ lead.get_priority_display }}</td>
+                    <td>{{ lead.get_status_display }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+{% endblock content %}

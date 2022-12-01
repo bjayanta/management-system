@@ -1,0 +1,15 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Edit Lead | MaxSOP{% endblock title %}
+
+{% block content %}
+    <section class="container">
+        <h1>Lead edit</h1>
+        <form action="." method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+{% endblock content %}

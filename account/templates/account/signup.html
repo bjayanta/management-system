@@ -1,0 +1,17 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Sign up | MaxSOP{% endblock title %}
+
+{% block content %}
+<section class="container">
+    <h1>Sign up</h1>
+
+    <form action="." method="post">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">Submit</button>
+    </form>
+</section>
+{% endblock content %}

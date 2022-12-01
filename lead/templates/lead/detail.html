@@ -1,0 +1,49 @@
+{% extends 'core/base.html' %}
+
+{% block title %}{{ lead.name }} | MaxSOP{% endblock title %}
+
+{% block content %}
+    <section class="container">
+        <h1>{{ lead.name }}</h1>
+        <p class="lead">{{ lead.email }}</p>
+
+        {% if lead.description %}
+            <div>
+                <strong>Description</strong>
+                <p>{{ lead.description }}</p>
+            </div>
+        {% endif %}
+
+        <div>
+            <strong>Priority</strong>
+            <p>{{ lead.get_priority_display }}</p>
+        </div>
+
+        <div>
+            <strong>Status</strong>
+            <p>{{ lead.get_status_display }}</p>
+        </div>
+
+        <div>
+            <strong>Created by</strong>
+            <p>{{ lead.created_by }}</p>
+        </div>
+
+        <div>
+            <strong>Created at</strong>
+            <p>{{ lead.created_at|date:'M-d-D-Y H:i' }}</p>
+        </div>
+
+        <div>
+            <strong>Modified at</strong>
+            <p>{{ lead.modified_at }}</p>
+        </div>
+
+        <hr/>
+        <a href="{% url 'lead.edit' lead.id %}" class="btn btn-success">Edit</a>
+        <a href="{% url 'lead.delete' lead.id %}" class="btn btn-danger">Delete</a>
+        <hr/>
+        <a href="{% url 'lead.list' %}" class="btn btn-info">Back to leads</a>
+        
+    </section>
+{% endblock content %}
